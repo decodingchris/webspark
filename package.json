@@ -1,0 +1,12 @@
+{
+  "name": "webspark",
+  "version": "1.0.0",
+  "description": "WebSpark starter template",
+  "main": "backend/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "Decoding Chris",
+  "license": "MIT"
+}
