@@ -28,7 +28,7 @@ const serveFile = (filepath, contentType, res) => {
   // Read the file and handle errors
   readFile(filepath, "utf-8", (err, data) => {
     if (err) {
-      console.log(err);
+      console.error(err);
       return showStatus(500, res);
     }
     // Send the file content as response
@@ -45,15 +45,33 @@ const getFullPath = (filepath) => {
 // Create the server
 const server = createServer((req, res) => {
   const myURL = new URL(req.url, `http://${req.headers.host}`);
-  // Serve different files based on the URL pathname
-  if (myURL.pathname === "/" && req.method === "GET") {
-    serveFile(getFullPath("../frontend/index.html"), "text/html", res);
-  } else if (myURL.pathname === "/style.css" && req.method === "GET") {
-    serveFile(getFullPath("../frontend/style.css"), "text/css", res);
-  } else if (myURL.pathname === "/script.js" && req.method === "GET") {
-    serveFile(getFullPath("../frontend/script.js"), "text/javascript", res);
-  } else {
-    return showStatus(404, res);
+  // Serve different files or json based on the URL pathname
+  if (req.method === "GET") {
+    switch (myURL.pathname) {
+      case "/":
+        serveFile(getFullPath("../frontend/index.html"), "text/html", res);
+        break;
+      case "/style.css":
+        serveFile(getFullPath("../frontend/style.css"), "text/css", res);
+        break;
+      case "/script.js":
+        serveFile(getFullPath("../frontend/script.js"), "text/javascript", res);
+        break;
+      case "/data":
+        res.writeHead(200, { "Content-Type": "text/plain" });
+        const today = new Date();
+        // add 24 hours in milliseconds to get tomorrow's date and time
+        const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+        const launchDate = tomorrow.toLocaleString([], {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+        return res.end(launchDate);
+      default:
+        return showStatus(404, res);
+    }
   }
 });
 
