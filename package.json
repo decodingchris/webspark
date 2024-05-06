@@ -5,8 +5,12 @@
   "main": "backend/server.js",
   "type": "module",
   "scripts": {
+    "dev": "nodemon backend/server.js",
     "start": "node backend/server.js"
   },
   "author": "Decoding Chris",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
 }
