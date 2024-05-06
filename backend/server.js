@@ -58,7 +58,7 @@ const server = createServer((req, res) => {
         serveFile(getFullPath("../frontend/script.js"), "text/javascript", res);
         break;
       case "/data":
-        res.writeHead(200, { "Content-Type": "text/plain" });
+        res.writeHead(200, { "Content-Type": "application/json" });
         const today = new Date();
         // add 24 hours in milliseconds to get tomorrow's date and time
         const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
@@ -68,7 +68,12 @@ const server = createServer((req, res) => {
           month: "long",
           year: "numeric",
         });
-        return res.end(launchDate);
+        const launchData = {
+          date: launchDate,
+          word: "on",
+        };
+        const launchJson = JSON.stringify(launchData);
+        return res.end(launchJson);
       default:
         return showStatus(404, res);
     }

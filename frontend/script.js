@@ -4,7 +4,7 @@ const getDataFromServer = async () => {
     if (!response.ok) {
       throw new Error("Couldn't get data.");
     }
-    const data = await response.text();
+    const data = await response.json();
     return data;
   } catch (err) {
     console.error(err.message);
@@ -13,11 +13,11 @@ const getDataFromServer = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const launchWordElement = document.getElementById("launch-word");
   const launchDateElement = document.getElementById("launch-date");
-  const launchDate = await getDataFromServer();
-  if (launchDate) {
-    launchDateElement.textContent = launchDate;
-  } else {
-    launchDateElement.textContent = "tomorrow";
+  const launchData = await getDataFromServer();
+  if (launchData) {
+    launchWordElement.textContent = launchData.word;
+    launchDateElement.textContent = launchData.date;
   }
 });
