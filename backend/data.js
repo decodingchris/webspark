@@ -1,4 +1,4 @@
-// [Example] function to generate launch data
+// [Example] Function to generate launch data
 export const getLaunchData = () => {
   const today = new Date();
   // add 24 hours in milliseconds to get tomorrow's date and time
