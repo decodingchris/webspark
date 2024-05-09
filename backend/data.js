@@ -11,7 +11,6 @@ export const getLaunchData = () => {
   });
   const launchData = {
     date: launchDate,
-    word: "on",
   };
   return JSON.stringify(launchData);
 };

@@ -15,11 +15,9 @@ const getLaunchDataFromServer = async () => {
 
 // [Example] Event listener to update the frontend with launch data
 document.addEventListener("DOMContentLoaded", async () => {
-  const launchWordElement = document.getElementById("launch-word");
   const launchDateElement = document.getElementById("launch-date");
   const launchData = await getLaunchDataFromServer();
   if (launchData) {
-    launchWordElement.textContent = launchData.word;
     launchDateElement.textContent = launchData.date;
   }
 });

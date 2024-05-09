@@ -12,12 +12,11 @@ export const error500 = (res) => {
     '<meta name="description" content="Test Your Web App Ideas Quickly" />'
   );
   res.write("<title>Server Error - WebSpark</title>");
-  res.write('<link rel="stylesheet" href="./style.css" />');
   res.write(
     '<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>" />'
   );
   res.write("</head>");
-  res.write("<body>");
+  res.write("<body style='font-family: Arial, Helvetica, sans-serif'>");
   res.write("<h1>Whoops! Server Error!</h1>");
   res.write("<p>Oh dear! 🙀</p>");
   res.write(
