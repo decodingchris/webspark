@@ -6,38 +6,28 @@ body {
 .grid-container {
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows:
+    auto
+    1fr
+    auto;
 }
 
 header {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
 main {
   display: flex;
   justify-content: center;
-  padding: 0 16px;
   text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 footer {
-  text-align: center;
-}
-
-.logo {
-  margin-top: 16px;
-}
-
-.links {
-  list-style-type: none;
-  padding: 0;
-}
-
-.links li {
-  display: inline;
-  padding: 0 10px;
-}
-
-.copyright {
-  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
